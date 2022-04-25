@@ -1,0 +1,14 @@
+h1 {
+  text-align: center;
+  margin: 1rem;
+}
+#container {
+  width: 100%;
+  margin: 5rem;
+  padding: 0.5rem;
+}
+#first {
+  width: 50%;
+  float: left;
+  height: 200px;
+}

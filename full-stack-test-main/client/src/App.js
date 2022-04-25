@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { Container, Table } from "react-bootstrap";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { get } from "./api/action";
 import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+import DispalyPatientsInfo from "./Pages/DispalyPatientsInfo";
+import SinglePatientInfo from "./Pages/SinglePatientInfo";
 
 function App() {
   const [patientReports, setPatientReports] = useState([]);
@@ -19,35 +20,21 @@ function App() {
 
   return (
     <div className="App">
-      <Container>
-        <h1>Patient Reports App</h1>
-        <Table striped bordered hover>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Registered</th>
-              <th>E-mail</th>
-              <th>Gender</th>
-              <th>Reports</th>
-            </tr>
-          </thead>
-          <tbody>
-            {patientReports.map(
-              (pReport) =>
-                pReport && (
-                  <tr>
-                    <td>{pReport.name}</td>
-                    <td>{pReport.registered}</td>
-                    <td>{pReport.email}</td>
-                    <td>{pReport.gender}</td>
-                    <td>{pReport.reports.length}</td>
-                  </tr>
-                )
-            )}
-          </tbody>
-        </Table>
-      </Container>
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path="/"
+            exact
+            element={<DispalyPatientsInfo patientReports={patientReports} />}
+          />
+          <Route
+            path="/patient/:registered/:name"
+            element={<SinglePatientInfo patientReports={patientReports} />}
+          />
+        </Routes>
+      </BrowserRouter>
     </div>
+    //created react-router links to navigate to get single patient info
   );
 }
 

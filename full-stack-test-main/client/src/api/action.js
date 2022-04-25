@@ -3,7 +3,7 @@ const SERVER_URL = `http://localhost:5000`;
 const get = async (endpoint) => {
   const url = SERVER_URL + endpoint;
   const response = await fetch(url);
-  console.log(response);
+  console.log(response.ok);
   if (response.ok) {
     return response.json();
   }
