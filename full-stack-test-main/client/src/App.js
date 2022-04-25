@@ -28,7 +28,7 @@ function App() {
             element={<DispalyPatientsInfo patientReports={patientReports} />}
           />
           <Route
-            path="/patient/:registered/:name"
+            path="/patient/:id/:name"
             element={<SinglePatientInfo patientReports={patientReports} />}
           />
         </Routes>

@@ -5,11 +5,10 @@ import { useNavigate } from "react-router-dom";
 
 const DispalyPatientsInfo = ({ patientReports }) => {
   const navigate = useNavigate();
-  const getPatientInfo = (registered, name) => {
-    console.log(registered, name);
-    navigate(`/patient/${registered}/${name}`);
+  const getPetientInfo = (id, name) => {
+    console.log(id, name);
+    navigate(`/patient/${id}/${name}`);
   };
-  // getPatientInfo function navigates to different to detail page
   return (
     <>
       <Container>
@@ -31,7 +30,7 @@ const DispalyPatientsInfo = ({ patientReports }) => {
                   <tr
                     key={pReport.registered}
                     onClick={() => {
-                      getPatientInfo(pReport.registered, pReport.name);
+                      getPetientInfo(pReport._id, pReport.name);
                     }}
                   >
                     <td>{pReport.name}</td>
